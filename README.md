@@ -1,5 +1,5 @@
 # ContadorDeEnergia
-Con este proyecto que contara para Evidencia podrás calcular la cantidad de energía en Joules  que tu cuerpo almacena y cuantos escalones deberías subir para que hayas eliminado esa energía sobrante de tu organismo este resultado sera personalizado ya que se le preguntara su peso al usuario.
+Con este proyecto podrás calcular la cantidad de energía en Joules  que tu cuerpo almacena y cuantos escalones deberías subir para que hayas eliminado esa energía sobrante de tu organismo este resultado sera personalizado ya que se le preguntara su peso al usuario.
 
 Este proyecto se me hace interesante ya que se me hace maravilloso como el cuerpo humano siempre busca regularse a si mismo ya que por ejemplo una persona con infrapeso tendra que hacer mucho ejercicio para poder quemar enegia acumulada en cambio lo opuesto pasa con una persona con sobrepeso ya que mientras mas masa mueva mas energia quema y tambien para crear conciencia de lo dañinos que son los alimentos chatarra
 
