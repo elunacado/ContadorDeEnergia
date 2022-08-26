@@ -19,7 +19,7 @@ Proceso
   Epotencial=peso*g*e
   
   #Esto nos dira la cantidad de energia que el cuerpo almacena de un alimento
-  kiloJoulesAlmacenados=(kiloJoulesDelAlimento*0.2)-8300
+  kiloJoulesAlmacenados=(kiloJoulesDelAlimento*0.8)-8300
   
   cuantosEscalones = kiloJoulesAlmacenados/Epotencial
   
