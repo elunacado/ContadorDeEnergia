@@ -10,18 +10,19 @@ Entrada
     -Calcular la cantidad de Joules que recibe tu cuerpo por cierto alimento
     -Producir a rutina de ejercicio
     -Pedir historial
+
 Proceso
-    -Calcular IMC
-      -Pedir peso
-      -Pedir altura
-      -peso/altura^2
-    -Calcular la cantidad de Joules
-       -Pedir kJ del alimento
-       -Pedir peso del usuario
-       donde: 
-       g=9.81
-         e=15
-    -Producir rutina
+-Calcular IMC
+  -Pedir peso
+  -Pedir altura
+  -peso/altura^2
+-Calcular la cantidad de Joules
+  -Pedir kJ del alimento
+  -Pedir peso del usuario
+    donde: 
+    g=9.81
+    e=15
+-Producir rutina
        -Pedir la intensidad de la rutina 
     -Pedir historial
        -Leer el historial del IMC
