@@ -55,9 +55,8 @@ def imprimirRutina(rutina):
         print(rutina[n])
 
 #funcion para saber si el usuario hace ejercicio y decide que clase de rutina quiere el usuario
-def hacesEjercicio():
+def hacesEjercicio(intensidad):
     rutina=[[" L  "," M  "," M  "," J  "," V  "],[" EJ "," DE "," EJ "," DE "," EJ "],["EJ = Ejercicio","DE = Descanso"]]
-    intensidad=input("¿Prefieres una rutina de ejercicio intensa o relajada? 1=Intensa, 2=Relajada")
     if intensidad == "1":
         print("Una buena rutina seria:")
         rutina=[[" L  "," M  "," M  "," J  "," V  "],[" EJ "," EJ "," EJ "," EJ "," EJ "],["EJ = Ejercicio"]]
@@ -69,7 +68,7 @@ def hacesEjercicio():
         imprimirRutina(rutina)
     else:
         print("Selecciona una opcion valida")
-        hacesEjercicio()
+        hacesEjercicio(intensidad)
 
 #funcion que contiene el menu
 def Menu(name):
@@ -79,11 +78,10 @@ def Menu(name):
     print("3. Sugiereme una rutina para realizar ejercicio")
     print("4. Dime el historial de mi IMC")
     print("5. Salir")
+    print("7. Prueba de Funcionamiento")
 
 #funcion para calcular el IMC del usuario
-def calcularIMC():
-    h=Height()
-    w=Weight()
+def calcularIMC(h, w):
     IMC= w/(h*h)
     condicion=""
     if IMC >= 30:
@@ -98,11 +96,7 @@ def calcularIMC():
     return IMC, condicion
 
 #funcion para calcular la cantidad de energia que gana el usuario al ingerir cierto alimento
-def EnergiaGananda(name):
-    w=Weight()
-    producto=Producto()
-    kC=int(input("Cuantas kiloCalorias tiene tu alimento "))
-    resultadoXGenero=Genero(kC)
+def EnergiaGananda(name, w, producto, kC, resultadoXGenero,):
     caloriasPorEscalon=w*9.81*.15
     result=resultadoXGenero/caloriasPorEscalon
     print(name ," tu ",producto," hara que almacenes ", resultadoXGenero , " Kilocalorias por lo que tendras que subir ", math.ceil(result)," escalones para quemar tu alimento " )
@@ -116,17 +110,24 @@ def main():
         Menu(name)
         menu=input("Selecciona el indice de la actividad que quieras realizar. 1-5 ")
         if menu == "1":
-            IMC, condicion=calcularIMC()
-            print("Tu IMC es de", IMC ,"lo que significa que tu condicion es de ",condicion )
+            h=Height()
+            w=Weight()
+            IMC, condicion=calcularIMC(h, w)
+            print("Tu IMC es de", round(IMC,2) ,"lo que significa que tu condicion es de ",condicion )
             historialImc.append(name)
             historialImc.append(IMC)
             historialImc.append(date.year)
         
         elif menu=="2":
-            EnergiaGananda(name)
+            w=Weight()
+            producto=Producto()
+            kC=int(input("Cuantas kiloCalorias tiene tu alimento "))
+            resultadoXGenero=Genero(kC)
+            EnergiaGananda(name, w, producto,kC, resultadoXGenero)
         
         elif menu=="3":
-            hacesEjercicio()
+            intensidad=input("¿Prefieres una rutina de ejercicio intensa o relajada? 1=Intensa, 2=Relajada")
+            hacesEjercicio(intensidad)
 
         elif menu=="4":
             if len(historialImc) == 0:
@@ -141,3 +142,68 @@ def main():
             break
 
 main()
+
+def prueba():
+    name="DUMMY"
+    historialImc=["John Doe", "27.8","2010"]
+    date=dt.date.today()
+
+    #Menu
+    Menu(name)
+    print(" ")
+
+    
+    #Calcula Tu IMC
+    
+    #Entrada
+    h=1.80
+    w=90
+    
+    #Salida Esperada
+    #tu IMC es de 27.78 lo que significa que tu condicion es de sobrepeso
+    IMC, condicion=calcularIMC(h,w)
+    print("tu IMC es de", round(IMC, 2), "lo que significa que tu condicion es de ", condicion)
+    historialImc.append(name)
+    historialImc.append(round(IMC, 2))
+    historialImc.append(date.year)
+    print("")
+
+    #Valores Ingresados/Calculados
+    w=90
+    producto="Manzana +"
+    kC=90
+
+    #resultadoXGenero se calcula de la siguiente formula en este caso se asume que el usuario es Hombre
+    #((kC*1000)*.80)-8300
+    resultadoXGenero=63700
+    
+    #resultado esperado 
+    #DUMMY tu Manzana + hara que almacenes  63700  Kilocalorias por lo que tendras que subir  481  escalones para quemar tu alimento
+    EnergiaGananda(name, w, producto,kC, resultadoXGenero)
+    print("")
+
+
+    #Creador de Rutina de Ejercicio
+    intensidad="1"
+
+    #Resultado Esperado 
+    #Una buena rutina seria:
+        #[' L  ', ' M  ', ' M  ', ' J  ', ' V  ']
+        #[' EJ ', ' EJ ', ' EJ ', ' EJ ', ' EJ ']
+        #['EJ = Ejercicio']
+    #Este utiiza una matriz para  crear una estadistica 2D
+    hacesEjercicio(intensidad)
+    print("")
+
+    #Checar historial de IMC
+    print(name, "tu IMC de manera cronologica ha sido de (IMC, año)")
+    
+    #Resultado Esperado
+    #DUMMY tu IMC de manera cronologica ha sido de (IMC, año)
+    #['John Doe', '27.8', '2010', 'DUMMY', 27.78, 2022]
+    print(historialImc)
+    print("")
+
+
+
+prueba()
