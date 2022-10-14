@@ -246,9 +246,9 @@ def appendFile(archivo, IMC):
 
     """
     date=dt.date.today()
-    print("El historial se muestra como IMC, Fecha")
+    #print("El historial se muestra como IMC, Fecha")
 
-    archivo.write(int(round(IMC,2)))
+    archivo.write(str(round(IMC,2)))
     archivo.write("\n")
     archivo.write(str(date.year))
     archivo.write("\n")
@@ -309,7 +309,7 @@ def prueba():
     print("")
 
     #Checar historial de IMC
-    print(name, "tu IMC de manera cronologica ha sido de (IMC, año)")
+    print(name, "tu IMC de manera cronologica ha sido de (nombre,IMC, año)")
     
     #Resultado Esperado
     #DUMMY tu IMC de manera cronologica ha sido de (IMC, año)
@@ -319,6 +319,8 @@ def prueba():
     
     archivoAp=open("historial.txt", "a")
     date=dt.date.today()
+    archivoAp.write(name)
+    archivoAp.write("\n")
     archivoAp.write(str(round(IMC,2)))
     archivoAp.write("\n")
     archivoAp.write(str(date.year))
@@ -337,7 +339,7 @@ def main():
     date=dt.date.today()
     while True:
         Menu(name)
-        menu=input("Selecciona el indice de la actividad que quieras realizar. 1-5 ")
+        menu=input("Selecciona el indice de la actividad que quieras realizar. 1-7 ")
         if menu == "1":
             h=Height()
             w=Weight()
